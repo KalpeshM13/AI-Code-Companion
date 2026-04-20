@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import { spawn, ChildProcess } from 'child_process';
 import * as path from 'path';
 import axios from 'axios';
+import * as net from 'net';
 
 export class ServerManager {
     private serverProcess: ChildProcess | undefined;
@@ -53,7 +54,7 @@ export class ServerManager {
         return this.serverProcess !== undefined && !this.serverProcess.killed;
     }
 
-    async waitForServer(maxRetries: number = 30, delayMs: number = 1000): Promise<boolean> {
+    async waitForServer(maxRetries = 30, delayMs = 1000): Promise<boolean> {
         for (let i = 0; i < maxRetries; i++) {
             try {
                 await axios.get('http://127.0.0.1:8000/models', { timeout: 2000 });
@@ -63,8 +64,9 @@ export class ServerManager {
                 try {
                     await axios.post('http://127.0.0.1:8000/warmup', {}, { timeout: 10000 });
                     console.log('Model warmed up successfully!');
-                } catch (warmupError: any) {
-                    console.warn('Model warmup failed, but server is ready:', warmupError.message);
+                } catch (warmupError: unknown) {
+                    const message = warmupError instanceof Error ? warmupError.message : String(warmupError);
+                    console.warn('Model warmup failed, but server is ready:', message);
                 }
 
                 return true;
