@@ -58,20 +58,47 @@ VS Code Extension (TypeScript)
 
 ### **Development Mode**
 
+#### **Step 1: Backend Setup**
 ```bash
-# Clone the repository
-git clone #
-cd gpt2-local/extension
+# Install Python dependencies
+pip install -r extension/requirements.txt
+```
 
-# Install dependencies
+#### **Step 2: Extension Setup**
+```bash
+# Navigate to extension directory
+cd extension
+
+# Install Node.js dependencies
 npm install
 
 # Compile TypeScript
 npm run compile
-
-# Open in VS Code and press F5
-code .
 ```
+
+#### **Step 3: Development Mode**
+```bash
+# Open project in VS Code
+code .
+
+# Press F5 to launch Extension Development Host
+# This opens a new VS Code window with the extension loaded
+```
+
+#### **Step 4: Packaging (Optional)**
+```bash
+# Install VS Code Extension Manager
+npm install -g @vscode/vsce
+
+# Package the extension
+cd extension
+vsce package
+
+# Install locally
+code --install-extension gpt2-local-autocomplete-0.0.1.vsix
+```
+
+---
 
 ### **Using the Extension**
 
@@ -233,10 +260,10 @@ POST /predict
 
 ## 📄 **License**
 
-**MIT License** - See main repository for details.
+(**MIT License**)[https://github.com/KalpeshM13/AI-Code-Companion/blob/main/LICENSE]
 
 ## 🔗 **Links**
 
-- **Main Repository**: #
-- **Issues**: #
-- **Documentation**: #
+- (**Main Repository**)[https://www.github.com/KalpeshM13/AI-Code-Companion]
+- (**Issues**)[https://github.com/KalpeshM13/AI-Code-Companion/issues]
+- (**Documentation**)[https://github.com/KalpeshM13/AI-Code-Companion#-gpt-2-local-autocomplete]
