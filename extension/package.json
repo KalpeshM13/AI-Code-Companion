@@ -1,0 +1,287 @@
+{
+  "name": "ai-code-companion",
+  "displayName": "AI Code Companion",
+  "description": "Professional AI-powered code completion with multiple models, advanced analytics, and enterprise features",
+  "version": "1.0.0",
+  "publisher": "ai-code-companion",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KalpeshM13/gpt2-local"
+  },
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ai-code-companion.toggle",
+        "title": "AI Code: Toggle",
+        "category": "AI Code Companion"
+      },
+      {
+        "command": "ai-code-companion.switchModel",
+        "title": "AI Code: Switch Model",
+        "category": "AI Code Companion"
+      },
+      {
+        "command": "ai-code-companion.benchmarkModels",
+        "title": "AI Code: Benchmark Models",
+        "category": "AI Code Companion"
+      },
+      {
+        "command": "ai-code-companion.manageModels",
+        "title": "AI Code: Manage Models",
+        "category": "AI Code Companion"
+      },
+      {
+        "command": "ai-code-companion.undoLast",
+        "title": "AI Code: Undo Last Completion",
+        "category": "AI Code Companion"
+      },
+      {
+        "command": "ai-code-companion.showHistory",
+        "title": "AI Code: Show Completion History",
+        "category": "AI Code Companion"
+      },
+      {
+        "command": "ai-code-companion.showStats",
+        "title": "AI Code: Show Statistics",
+        "category": "AI Code Companion"
+      },
+      {
+        "command": "ai-code-companion.openSettings",
+        "title": "AI Code: Open Settings",
+        "category": "AI Code Companion"
+      },
+      {
+        "command": "ai-code-companion.exportSettings",
+        "title": "AI Code: Export Settings",
+        "category": "AI Code Companion"
+      },
+      {
+        "command": "ai-code-companion.importSettings",
+        "title": "AI Code: Import Settings",
+        "category": "AI Code Companion"
+      },
+      {
+        "command": "ai-code-companion.showCompletionStats",
+        "title": "AI Code: Show Completion Statistics",
+        "category": "AI Code Companion"
+      },
+      {
+        "command": "ai-code-companion.refreshModels",
+        "title": "Refresh",
+        "icon": "$(refresh)",
+        "category": "AI Code Companion"
+      },
+      {
+        "command": "ai-code-companion.openModelDocs",
+        "title": "Open Model Documentation",
+        "category": "AI Code Companion"
+      },
+      {
+        "command": "ai-code-companion.copyCompletion",
+        "title": "Copy Completion",
+        "category": "AI Code Companion"
+      },
+      {
+        "command": "ai-code-companion.clearCache",
+        "title": "Clear Cache",
+        "category": "AI Code Companion"
+      },
+      {
+        "command": "ai-code-companion.testConnection",
+        "title": "Test Server Connection",
+        "category": "AI Code Companion"
+      },
+      {
+        "command": "ai-code-companion.showModelCacheLocation",
+        "title": "Show Model Cache Location",
+        "category": "AI Code Companion"
+      },
+      {
+        "command": "ai-code-companion.modifySetting",
+        "title": "Modify Setting",
+        "category": "AI Code Companion"
+      },
+      {
+        "command": "ai-code-companion.openChat",
+        "title": "AI Code: Open Chat",
+        "category": "AI Code Companion"
+      },
+      {
+        "command": "ai-code-companion.clearChat",
+        "title": "Clear Chat",
+        "icon": "$(clear-all)",
+        "category": "AI Code Companion"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ai-code-companion",
+          "title": "AI Code Companion",
+          "icon": "$(robot)"
+        }
+      ]
+    },
+    "views": {
+      "ai-code-companion": [
+        {
+          "id": "ai-chat",
+          "name": "AI Chat",
+          "icon": "$(comment-discussion)"
+        },
+        {
+          "id": "ai-models",
+          "name": "AI Models",
+          "icon": "$(hubot)"
+        },
+        {
+          "id": "ai-settings",
+          "name": "Settings",
+          "icon": "$(settings-gear)"
+        },
+        {
+          "id": "ai-statistics",
+          "name": "Statistics",
+          "icon": "$(graph)"
+        },
+        {
+          "id": "ai-history",
+          "name": "Completion History",
+          "icon": "$(history)"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "ai-code-companion.refreshModels",
+          "when": "view == ai-models",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "ai-code-companion.switchModel",
+          "when": "view == ai-models && viewItem == modelItem",
+          "group": "inline"
+        },
+        {
+          "command": "ai-code-companion.openModelDocs",
+          "when": "view == ai-models && viewItem == modelItem",
+          "group": "inline"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Code Completion",
+      "properties": {
+        "codeCompletion.serverUrl": {
+          "type": "string",
+          "default": "http://127.0.0.1:8000",
+          "description": "URL of the local completion server"
+        },
+        "codeCompletion.temperature": {
+          "type": "number",
+          "default": 0.1,
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Sampling temperature (lower = more deterministic)"
+        },
+        "codeCompletion.topP": {
+          "type": "number",
+          "default": 0.95,
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Top-p sampling parameter"
+        },
+        "codeCompletion.topK": {
+          "type": "number",
+          "default": 50,
+          "minimum": 1,
+          "maximum": 100,
+          "description": "Top-k sampling parameter"
+        },
+        "codeCompletion.maxTokens": {
+          "type": "number",
+          "default": 64,
+          "minimum": 10,
+          "maximum": 512,
+          "description": "Maximum tokens to generate for multiline completions"
+        },
+        "codeCompletion.modelName": {
+          "type": "string",
+          "default": "shibing624/code-autocomplete-gpt2-base",
+          "description": "HuggingFace model name to use"
+        },
+        "codeCompletion.useQuantization": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable 8-bit quantization (requires bitsandbytes)"
+        },
+        "codeCompletion.logLevel": {
+          "type": "string",
+          "enum": [
+            "error",
+            "warn",
+            "info",
+            "debug"
+          ],
+          "default": "info",
+          "description": "Logging level for debugging"
+        },
+        "codeCompletion.suggestionTheme": {
+          "type": "string",
+          "enum": [
+            "default",
+            "subtle",
+            "prominent",
+            "colored"
+          ],
+          "default": "default",
+          "description": "Visual theme for code completion suggestions"
+        },
+        "codeCompletion.showCompletionStats": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show completion statistics in status bar"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "update-deps": "npm update && npm audit fix"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.74.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^8.28.0",
+    "glob": "^8.1.0",
+    "mocha": "^11.3.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  }
+}

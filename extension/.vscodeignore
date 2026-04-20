@@ -1,0 +1,5 @@
+.vscodeignore
+error.log
+__pycache__
+venv/
+*.ts
