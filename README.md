@@ -260,10 +260,10 @@ POST /predict
 
 ## 📄 **License**
 
-MIT License. See (LICENSE)[https://github.com/KalpeshM13/AI-Code-Companion/blob/main/LICENSE]
+[**MIT License**](https://github.com/KalpeshM13/AI-Code-Companion/blob/main/LICENSE)
 
 ## 🔗 **Links**
 
-- (Main Repository)[https://www.github.com/KalpeshM13/AI-Code-Companion]
-- (Issues)[https://github.com/KalpeshM13/AI-Code-Companion/issues]
-- (Documentation)[https://github.com/KalpeshM13/AI-Code-Companion#-gpt-2-local-autocomplete]
+- [**Main Repository**](https://www.github.com/KalpeshM13/AI-Code-Companion)
+- [**Issues**](https://github.com/KalpeshM13/AI-Code-Companion/issues)
+- [**Documentation**](https://github.com/KalpeshM13/AI-Code-Companion#-gpt-2-local-autocomplete)
