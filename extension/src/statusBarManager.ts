@@ -3,8 +3,8 @@ import { ServerManager } from './serverManager';
 
 export class StatusBarManager {
     private statusBarItem: vscode.StatusBarItem;
-    private isEnabled: boolean = true;
-    private serverRunning: boolean = false;
+    private isEnabled = true;
+    private serverRunning = false;
     private cacheHits = 0;
     private totalRequests = 0;
     private lastResponseTime = 0;

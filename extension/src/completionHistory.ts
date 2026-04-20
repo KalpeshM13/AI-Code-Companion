@@ -22,7 +22,7 @@ export class CompletionHistory {
         return this.history.length > 0 ? this.history[0] : undefined;
     }
 
-    getRecentCompletions(limit: number = 10): Array<{ text: string; timestamp: number }> {
+    getRecentCompletions(limit = 10): Array<{ text: string; timestamp: number }> {
         return this.history.slice(0, limit).map(item => ({
             text: item.text,
             timestamp: item.timestamp

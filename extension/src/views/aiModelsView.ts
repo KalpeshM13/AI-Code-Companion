@@ -6,7 +6,7 @@ export class AIModelsViewProvider implements vscode.TreeDataProvider<ModelItem> 
     readonly onDidChangeTreeData: vscode.Event<ModelItem | undefined | null | void> = this._onDidChangeTreeData.event;
 
     private models: any[] = [];
-    private currentModel: string = '';
+    private currentModel = '';
 
     constructor(private context: vscode.ExtensionContext) {
         this.loadModels();

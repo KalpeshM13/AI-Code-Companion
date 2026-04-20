@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import axios from 'axios';
 
 export class ChatViewProvider implements vscode.WebviewViewProvider {
     public static readonly viewType = 'ai-chat';
@@ -58,7 +59,6 @@ export class ChatViewProvider implements vscode.WebviewViewProvider {
 
     private async _sendChatMessage(message: string): Promise<string> {
         try {
-            const axios = require('axios');
             const response = await axios.post('http://127.0.0.1:8000/chat', {
                 message: message,
                 context: this._getCodeContext()

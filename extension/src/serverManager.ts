@@ -12,7 +12,7 @@ export class ServerManager {
         console.log(`Launching server from: ${serverPath}`);
 
         // 2. Try multiple sources for Python path
-        let pythonPath = this.findPythonPath();
+        const pythonPath = this.findPythonPath();
 
         console.log(`Launching server with: ${pythonPath}`);
 
@@ -80,7 +80,7 @@ export class ServerManager {
     private findPythonPath(): string {
         // Try VS Code Python configuration
         const pythonConfig = vscode.workspace.getConfiguration('python');
-        let pythonPath = pythonConfig.get<string>('defaultInterpreterPath');
+        const pythonPath = pythonConfig.get<string>('defaultInterpreterPath');
 
         if (pythonPath && pythonPath !== 'python') {
             return pythonPath;
