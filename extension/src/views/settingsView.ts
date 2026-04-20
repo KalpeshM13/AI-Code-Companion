@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import { Logger } from '../logger';
+import axios from 'axios';
 
 export class SettingsViewProvider implements vscode.TreeDataProvider<SettingItem> {
     private _onDidChangeTreeData: vscode.EventEmitter<SettingItem | undefined | null | void> = new vscode.EventEmitter<SettingItem | undefined | null | void>();
@@ -208,7 +209,6 @@ export class SettingsViewProvider implements vscode.TreeDataProvider<SettingItem
 
     private async modifyModelSetting(): Promise<void> {
         try {
-            const axios = require('axios');
             const response = await axios.get('http://127.0.0.1:8000/models', { timeout: 5000 });
             const models = response.data.models;
 

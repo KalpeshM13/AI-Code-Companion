@@ -2,7 +2,6 @@ import * as vscode from 'vscode';
 import { spawn, ChildProcess } from 'child_process';
 import * as path from 'path';
 import axios from 'axios';
-import * as net from 'net';
 
 export class ServerManager {
     private serverProcess: ChildProcess | undefined;
