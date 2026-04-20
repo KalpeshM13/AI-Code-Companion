@@ -35,10 +35,12 @@ jobs:
         cd extension
         npm run compile
     
-    - name: Run tests
+    - name: Run tests (VS Code extension)
       run: |
+        sudo apt-get update
+        sudo apt-get install -y xvfb
         cd extension
-        npm test
+        xvfb-run -a npm test
     
     - name: Setup Python
       uses: actions/setup-python@v4

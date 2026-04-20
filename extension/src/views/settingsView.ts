@@ -89,7 +89,7 @@ export class SettingsViewProvider implements vscode.TreeDataProvider<SettingItem
 
     // Setting modification methods
     async modifySetting(settingId: string): Promise<void> {
-        const config = vscode.workspace.getConfiguration('codeCompletion');
+        // const config = vscode.workspace.getConfiguration('codeCompletion');
 
         try {
             switch (settingId) {

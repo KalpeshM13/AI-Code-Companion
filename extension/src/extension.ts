@@ -289,7 +289,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
     context.subscriptions.push(vscode.commands.registerCommand('ai-code-companion.testConnection', async () => {
         try {
-            const response = await axios.get('http://127.0.0.1:8000/docs', { timeout: 5000 });
+            await axios.get('http://127.0.0.1:8000/docs', { timeout: 5000 });
             vscode.window.showInformationMessage('✅ Server connection successful');
         } catch (error) {
             vscode.window.showErrorMessage('❌ Server connection failed. Make sure the Python server is running.');
