@@ -1,15 +1,37 @@
-import * as assert from 'assert';
+import * as path from 'path';
+import * as Mocha from 'mocha';
+import { glob } from 'glob';
 
-// You can import and use all API from the 'vscode' module
-// as well as import your extension to test it
-import * as vscode from 'vscode';
-// import * as myExtension from '../../extension';
+export function run(): Promise<void> {
+  const mocha = new Mocha({
+    ui: 'tdd',     // provides suite/test
+    color: true
+  });
 
-suite('Extension Test Suite', () => {
-	vscode.window.showInformationMessage('Start all tests.');
+  const testsRoot = path.resolve(__dirname);
 
-	test('Sample test', () => {
-		assert.strictEqual(-1, [1, 2, 3].indexOf(5));
-		assert.strictEqual(-1, [1, 2, 3].indexOf(0));
-	});
-});
+  return new Promise((c, e) => {
+    glob('**/*.test.js', { cwd: testsRoot }, (err, files) => {
+      if (err) {
+        return e(err);
+      }
+
+      // Add files to the test suite
+      files.forEach(f => mocha.addFile(path.resolve(testsRoot, f)));
+
+      try {
+        // Run the mocha test
+        mocha.run(failures => {
+          if (failures > 0) {
+            e(new Error(`${failures} tests failed.`));
+          } else {
+            c();
+          }
+        });
+      } catch (err) {
+        console.error(err);
+        e(err);
+      }
+    });
+  });
+}
