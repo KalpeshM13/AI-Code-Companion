@@ -54,7 +54,7 @@ jobs:
     - name: Run Python tests
       run: |
         cd extension
-        python -m pytest ../server.py -v  # Assuming we add tests to server.py
+        python -m pytest -v tests/test_server.py
     
     - name: Package extension
       run: |
